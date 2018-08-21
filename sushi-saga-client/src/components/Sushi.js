@@ -6,11 +6,11 @@ class Sushi extends React.Component {
         super(props)
     }
     state={
-        bool: false
+        hasBeenEaten: false
     }
     handleClick = () => {
-        if(this.props.money > this.props.sushi.price){
-        this.setState({bool:true})
+        if(this.props.money > this.props.sushi.price && this.state.hasBeenEaten === false){
+        this.setState({hasBeenEaten:true})
         this.props.suchiClicked(this.props.sushi.price)
         }
     }
@@ -20,12 +20,10 @@ render(){
         <div className="plate" 
             onClick={this.handleClick}>
             { 
-            
-                this.state.bool === true ?
-                    null
-                :
-                    <img src={this.props.sushi.img_url} width="100%" />
-                }
+            this.state.hasBeenEaten === true ?
+            null :
+            <img src={this.props.sushi.img_url} width="100%" />
+            }
             </div>
             <h4 className="sushi-details">
                 {this.props.sushi.name} - ${this.props.sushi.price}

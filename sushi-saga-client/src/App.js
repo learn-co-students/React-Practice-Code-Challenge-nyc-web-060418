@@ -19,13 +19,11 @@ class App extends Component {
         fetch(API)
         .then(res => res.json())
         .then(res => this.setState({allSushi: res}, this.sushiSplitter) )
-        .then(res =>console.log("%cres","color:green;font-size:16px",res))
     }
+
     sushiSplitter = () => {
-        if(this.state.outOfMoney === false){
             const sushiPieces = this.state.allSushi.filter( obj => obj.id >= this.state.sushiCounter[0] && obj.id <= this.state.sushiCounter[1])
             this.setState({ activeSushiPieces: sushiPieces})
-        }
     }
     
     moreSushi = () => {
@@ -42,9 +40,8 @@ class App extends Component {
         arr.push("plate")
         this.setState({emptyPlates:arr, money: updatedMoney }, ()=> console.log("%cempty plates","color:red;font-size:18px",this.state.emptyPlates))
     }
-    // , sushiCounter:[beg+4, end+4] 
+
   render() {
-    // console.log("%csplitter","color:green;font-size:14px",this.sushiSplitter())
     console.log("%cactive","color:red;font-size:14px",this.state.activeSushiPieces)
     return (
       <div className="app">
