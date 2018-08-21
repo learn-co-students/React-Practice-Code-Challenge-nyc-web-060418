@@ -24,15 +24,17 @@ class App extends Component {
     this.fetchAPI()
   }
 
+  // grabs the changind data array and splices it
   onlyFour = () => {
     let grabFour = this.state.changingData.splice(0, 4)
     this.setState({
       tableSushi: grabFour
     })
   }
-
+  // grabs a sushi and adds it onto bought sushi array, subtracts price from my budget
   handleClick = (oneSushi) => {
     let balance = this.state.theBudget - oneSushi.price
+    // added last minute fix below to stop if at 0
     if(balance >= 0){
     this.setState({
       boughtSushi: [...this.state.boughtSushi, oneSushi],
@@ -41,6 +43,7 @@ class App extends Component {
     }
   }
 
+  // 
   render() {
     return (
       <div className="app" >
