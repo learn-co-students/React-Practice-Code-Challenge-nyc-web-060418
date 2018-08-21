@@ -11,7 +11,7 @@ class App extends Component {
     editableSushis: [],
     sushisOnTable: [],
     eatenSushi: [],
-    myBudget: 1000
+    myBudget: 100
   }
 
   componentDidMount() {
@@ -32,21 +32,23 @@ class App extends Component {
 
   handleClick = (sushi) => {
     this.setState({
-      eatenSushi: [...this.state.eatenSushi, sushi]
-    }, () => this.handleBudget())
-  }
-
-  handleBudget = () => {
-    let i;
-    let balance
-    for (i = 0; i < this.state.eatenSushi.length; i++) {
-      balance += this.state.eatenSushi.price
-    }
-    this.setState({
-      myBudget: balance
+      eatenSushi: [...this.state.eatenSushi, sushi],
+      myBudget: this.state.myBudget -= sushi.price
     })
-
   }
+
+  // myBudget: this.state.myBudget -= sushi.price
+
+  // handleBudget = () => {
+  //   let i;
+  //   let balance
+  //   for (i = 0; i < this.state.eatenSushi.length; i++) {
+  //     balance += this.state.eatenSushi.price
+  //   }
+
+  //   if (balance > this.state.myBudget) ? 
+
+  // }
 
   render() {
     return (
@@ -59,7 +61,8 @@ class App extends Component {
           eatenSushi={this.state.eatenSushi} />
         <Table
           sushis={this.state.sushis}
-          eatenSushi={this.state.eatenSushi} />
+          eatenSushi={this.state.eatenSushi}
+          myBudget={this.state.myBudget} />
       </div>
     );
   }

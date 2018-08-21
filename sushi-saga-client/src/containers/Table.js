@@ -13,7 +13,7 @@ const Table = (props) => {
   return (
     <Fragment>
       <h1 className="remaining">
-        You have: ${} remaining!
+        You have: ${props.myBudget} remaining!
       </h1>
       <div className="table">
         <div className="stack">
