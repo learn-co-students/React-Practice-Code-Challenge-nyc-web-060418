@@ -37,15 +37,10 @@ class App extends Component {
     
     suchiClicked = (price) => {
         const updatedMoney = this.state.money - price
-        if (updatedMoney > 0){
-            console.log("%cclick from susho","color:red;font-size:18px",)
-            const arr = [...this.state.emptyPlates]
-            arr.push("plate")
-            this.setState({emptyPlates:arr, money: updatedMoney }, ()=> console.log("%cempty plates","color:red;font-size:18px",this.state.emptyPlates))
-        }else{
-            null
-            // this.setState({outOfMoney: true})
-        }
+        console.log("%cclick from susho","color:red;font-size:18px",)
+        const arr = [...this.state.emptyPlates]
+        arr.push("plate")
+        this.setState({emptyPlates:arr, money: updatedMoney }, ()=> console.log("%cempty plates","color:red;font-size:18px",this.state.emptyPlates))
     }
     // , sushiCounter:[beg+4, end+4] 
   render() {
