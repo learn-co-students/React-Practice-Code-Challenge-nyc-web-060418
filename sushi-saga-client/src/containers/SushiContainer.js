@@ -9,8 +9,6 @@ const SushiContainer = (props) => {
         sushi={sushi}
         key={sushi.id}
         handleClick={props.handleClick}
-        getFourSushis={props.getFourSushis}
-        sushisOnTable={props.sushisOnTable}
         eatenSushi={props.eatenSushi} />)
     return sushiArr
   }

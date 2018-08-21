@@ -31,11 +31,16 @@ class App extends Component {
   }
 
   handleClick = (sushi) => {
+    let balance = this.state.myBudget - sushi.price
     this.setState({
       eatenSushi: [...this.state.eatenSushi, sushi],
-      myBudget: this.state.myBudget -= sushi.price
+      myBudget: balance
     })
+    if (this.state.myBudget < sushi.price) {
+      alert('check your balance!')
+    }
   }
+
 
   // myBudget: this.state.myBudget -= sushi.price
 
