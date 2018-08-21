@@ -8,10 +8,13 @@ const API = "http://localhost:3000/sushis"
 class App extends Component {
     state = {
         allSushi: [],
-        sushiCounter: [1,4],
+        availableSushi:[],
+        sushiRange: [1,4],
         activeSushiPieces: [],
+        annihilatedSushi:[],
         money: 100,
         emptyPlates: [],
+
 
     }
     componentDidMount(){
@@ -21,15 +24,20 @@ class App extends Component {
     }
 
     sushiSplitter = () => {
-            const sushiPieces = this.state.allSushi.filter( obj => obj.id >= this.state.sushiCounter[0] && obj.id <= this.state.sushiCounter[1])
+            const sushiPieces = this.state.allSushi.filter( obj => obj.id >= this.state.sushiRange[0] && obj.id <= this.state.sushiRange[1])
             this.setState({ activeSushiPieces: sushiPieces})
     }
     
     moreSushi = () => {
-        console.log("%cclick from button","color:red;font-size:18px",)
-        const beg = this.state.sushiCounter[0]
-        const end = this.state.sushiCounter[1]
-        this.setState({sushiCounter:[beg+4, end+4]}, this.sushiSplitter)
+        console.log("%cclick from button","color:green;font-size:10px",)
+        const beg = this.state.sushiRange[0]
+        const end = this.state.sushiRange[1]
+        if(end <100){
+            this.setState({sushiRange:[beg+4, end+4]}, this.sushiSplitter)
+        }else{
+            this.setState({sushiRange: [1,4]}, this.sushiSplitter)
+            console.log("%cfinished 100","color:red;font-size:18px")
+        }
     }
     
     suchiClicked = (price) => {
@@ -39,10 +47,18 @@ class App extends Component {
         this.setState({emptyPlates:arr, money: updatedMoney })
     }
 
+    ateThatSushi = (id) => {
+        const sushi = [...this.state.annihilatedSushi]
+        sushi.push(id)
+        this.setState({annihilatedSushi:sushi}, console.log("%ceaten Sushi","color:red;font-size:18px",this.state.annihilatedSushi))
+
+    }
+
+
   render() {
     return (
       <div className="app">
-        <SushiContainer  sushi={this.state.activeSushiPieces} moreSushi={this.moreSushi} suchiClicked={this.suchiClicked} money={this.state.money}/>
+        <SushiContainer  sushi={this.state.activeSushiPieces} moreSushi={this.moreSushi} suchiClicked={this.suchiClicked} money={this.state.money} ateThatSushi={this.ateThatSushi} annihilatedSushi={this.state.annihilatedSushi}/>
         <Table money={this.state.money} emptyPlates={this.state.emptyPlates} price={this.state.money}/>
       </div>
     );
