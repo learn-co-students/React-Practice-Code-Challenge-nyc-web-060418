@@ -33,10 +33,12 @@ class App extends Component {
 
   handleClick = (oneSushi) => {
     let balance = this.state.theBudget - oneSushi.price
+    if(balance >= 0){
     this.setState({
       boughtSushi: [...this.state.boughtSushi, oneSushi],
       theBudget: balance
     })
+    }
   }
 
   render() {
