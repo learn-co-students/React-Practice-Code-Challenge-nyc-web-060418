@@ -43,7 +43,8 @@ class App extends Component {
             arr.push("plate")
             this.setState({emptyPlates:arr, money: updatedMoney }, ()=> console.log("%cempty plates","color:red;font-size:18px",this.state.emptyPlates))
         }else{
-            this.setState({outOfMoney: true})
+            null
+            // this.setState({outOfMoney: true})
         }
     }
     // , sushiCounter:[beg+4, end+4] 
@@ -52,7 +53,7 @@ class App extends Component {
     console.log("%cactive","color:red;font-size:14px",this.state.activeSushiPieces)
     return (
       <div className="app">
-        <SushiContainer  sushi={this.state.activeSushiPieces} moreSushi={this.moreSushi} suchiClicked={this.suchiClicked} outOfMoney={this.state.outOfMoney}/>
+        <SushiContainer  sushi={this.state.activeSushiPieces} moreSushi={this.moreSushi} suchiClicked={this.suchiClicked} money={this.state.money}/>
         <Table money={this.state.money} emptyPlates={this.state.emptyPlates} price={this.state.money}/>
       </div>
     );

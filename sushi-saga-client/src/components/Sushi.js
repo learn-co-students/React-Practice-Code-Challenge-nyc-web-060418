@@ -9,7 +9,7 @@ class Sushi extends React.Component {
         bool: false
     }
     handleClick = () => {
-        if(this.props.outOfMoney === false){
+        if(this.props.money > this.props.sushi.price){
         this.setState({bool:true})
         this.props.suchiClicked(this.props.sushi.price)
         }
