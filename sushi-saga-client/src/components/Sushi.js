@@ -25,9 +25,9 @@ render(){
             <img src={this.props.sushi.img_url} width="100%" />
             }
             </div>
-            <h4 className="sushi-details">
-                {this.props.sushi.name} - ${this.props.sushi.price}
-            </h4>
+                <h4 className="sushi-details">
+                    {this.props.sushi.name} - ${this.props.sushi.price}
+                </h4>
             </div>
         )
     }

@@ -15,7 +15,7 @@ const Table = ({money, emptyPlates}) => {
         </h1>
         <div className="table">
             <div className="stack">
-                { renderPlates(emptyPlates)}
+                { renderPlates(emptyPlates) }
             </div>
         </div>
         </Fragment>

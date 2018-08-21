@@ -12,7 +12,6 @@ class App extends Component {
         activeSushiPieces: [],
         money: 100,
         emptyPlates: [],
-        outOfMoney: false
 
     }
     componentDidMount(){
@@ -35,14 +34,12 @@ class App extends Component {
     
     suchiClicked = (price) => {
         const updatedMoney = this.state.money - price
-        console.log("%cclick from susho","color:red;font-size:18px",)
         const arr = [...this.state.emptyPlates]
         arr.push("plate")
-        this.setState({emptyPlates:arr, money: updatedMoney }, ()=> console.log("%cempty plates","color:red;font-size:18px",this.state.emptyPlates))
+        this.setState({emptyPlates:arr, money: updatedMoney })
     }
 
   render() {
-    console.log("%cactive","color:red;font-size:14px",this.state.activeSushiPieces)
     return (
       <div className="app">
         <SushiContainer  sushi={this.state.activeSushiPieces} moreSushi={this.moreSushi} suchiClicked={this.suchiClicked} money={this.state.money}/>
