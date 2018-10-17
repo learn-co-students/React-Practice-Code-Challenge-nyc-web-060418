@@ -7,8 +7,6 @@ class Sushi extends React.Component {
             hasBeenEaten: false
         }
     }
-    componentDidUpdate(){
-    }
     
     sushiStillAvailable = () => {
         this.props.annihilatedSushi.includes( this.props.sushi.id) && this.state.hasBeenEaten === false ?
